@@ -28,6 +28,8 @@ const saveTask = () => {
     taskArray.push(taskName);
     localStorage.setItem('tasks', JSON.stringify(taskArray));
 
+    inputText.value = '';
+
     if(taskArray.length > 0){
         noResultsContainer.classList.remove('visible');
         noResultsContainer.classList.add('hide');
