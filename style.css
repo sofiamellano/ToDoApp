@@ -84,3 +84,27 @@ body {
     color: white;
     font-weight: 600;
 }
+
+#resultsList {
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+}
+
+#resultsList li {
+    border: 1px solid #CCC;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#resultsList input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
