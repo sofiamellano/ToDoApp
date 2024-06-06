@@ -14,22 +14,34 @@ function createTaskElement(taskElement) {
     const liElement = document.createElement ('li');
     const inputElement = document.createElement ('input');
     inputElement.type = 'checkbox';
-    inputElement.id = taskElement.id;
+    inputElement.setAttribute('data-id', taskElement.id);
+    liElement.id = taskElement.id;
     inputElement.checked = taskElement.selected;
+
     inputElement.addEventListener('click', markElementAsDone);
+
     liElement.appendChild(inputElement);
     const textElement = document.createTextNode(taskElement.text);
     liElement.appendChild(textElement);
+
+    if(taskElement.selected){
+        liElement.classList.add('selected');
+    }
     return liElement;
 };
 
 function markElementAsDone(event){
-    const taskId = event.target.id;
+    const taskId = event.target.getAttribute('data-id');
+    const liElement = document.getElementById(`${taskId}`);
     taskArray.forEach(item => {
         if(item.id == taskId) {
             item.selected = !item.selected;
         };
     });
+
+    liElement.classList.toggle('selected'); //toggle crea la clase si no existe y la borra si existes.
+    
+
     localStorage.setItem('tasks', JSON.stringify(taskArray));
 };
 
